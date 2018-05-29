@@ -11,6 +11,7 @@ namespace pic10c_finalproject
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World");
+            Console.WriteLine("Still trying to see if the .suo file is existant");
             Console.Read();
         }
     }
