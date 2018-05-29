@@ -4,3 +4,6 @@ c:\users\alejandra\documents\visual studio 2015\Projects\pic10c_finalproject\pic
 c:\users\alejandra\documents\visual studio 2015\Projects\pic10c_finalproject\pic10c_finalproject\obj\Debug\pic10c_finalproject.csprojResolveAssemblyReference.cache
 c:\users\alejandra\documents\visual studio 2015\Projects\pic10c_finalproject\pic10c_finalproject\obj\Debug\pic10c_finalproject.exe
 c:\users\alejandra\documents\visual studio 2015\Projects\pic10c_finalproject\pic10c_finalproject\obj\Debug\pic10c_finalproject.pdb
+C:\Users\Alejandra\Desktop\UCLA\UCLA 2nd Year\Pic 10C\pic10c_finalproject\pic10c_finalproject\pic10c_finalproject\bin\Debug\pic10c_finalproject.exe.config
+C:\Users\Alejandra\Desktop\UCLA\UCLA 2nd Year\Pic 10C\pic10c_finalproject\pic10c_finalproject\pic10c_finalproject\obj\Debug\pic10c_finalproject.exe
+C:\Users\Alejandra\Desktop\UCLA\UCLA 2nd Year\Pic 10C\pic10c_finalproject\pic10c_finalproject\pic10c_finalproject\obj\Debug\pic10c_finalproject.pdb
