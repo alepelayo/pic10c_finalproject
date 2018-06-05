@@ -13,3 +13,10 @@ C:\Users\Alejandra\Desktop\UCLA\UCLA 2nd Year\Pic 10C\pic10c_finalproject\pic10c
 G:\pic10c_finalproject\pic10c_finalproject\bin\Debug\pic10c_finalproject.exe.config
 G:\pic10c_finalproject\pic10c_finalproject\obj\Debug\pic10c_finalproject.exe
 G:\pic10c_finalproject\pic10c_finalproject\obj\Debug\pic10c_finalproject.pdb
+E:\pic10c_finalproject\pic10c_finalproject\bin\Debug\pic10c_finalproject.exe.config
+E:\pic10c_finalproject\pic10c_finalproject\bin\Debug\pic10c_finalproject.exe
+E:\pic10c_finalproject\pic10c_finalproject\bin\Debug\pic10c_finalproject.pdb
+E:\pic10c_finalproject\pic10c_finalproject\obj\Debug\pic10c_finalproject.csprojResolveAssemblyReference.cache
+E:\pic10c_finalproject\pic10c_finalproject\obj\Debug\pic10c_finalproject.csproj.CoreCompileInputs.cache
+E:\pic10c_finalproject\pic10c_finalproject\obj\Debug\pic10c_finalproject.exe
+E:\pic10c_finalproject\pic10c_finalproject\obj\Debug\pic10c_finalproject.pdb

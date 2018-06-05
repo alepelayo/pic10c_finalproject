@@ -10,8 +10,10 @@ namespace pic10c_finalproject
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World");
-            Console.WriteLine("Still trying to see if the .suo file is existant");
+            Console.WriteLine("Hello World. What is your name: ");
+            string input = Console.ReadLine();
+            string [] split = input.Split(' ');
+            
             Console.Read();
         }
     }
