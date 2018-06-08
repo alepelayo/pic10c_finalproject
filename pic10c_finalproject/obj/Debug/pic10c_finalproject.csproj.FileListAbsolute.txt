@@ -20,3 +20,6 @@ E:\pic10c_finalproject\pic10c_finalproject\obj\Debug\pic10c_finalproject.csprojR
 E:\pic10c_finalproject\pic10c_finalproject\obj\Debug\pic10c_finalproject.csproj.CoreCompileInputs.cache
 E:\pic10c_finalproject\pic10c_finalproject\obj\Debug\pic10c_finalproject.exe
 E:\pic10c_finalproject\pic10c_finalproject\obj\Debug\pic10c_finalproject.pdb
+G:\pic10c_finalproject\pic10c_finalproject\bin\Debug\pic10c_finalproject.exe
+G:\pic10c_finalproject\pic10c_finalproject\bin\Debug\pic10c_finalproject.pdb
+G:\pic10c_finalproject\pic10c_finalproject\obj\Debug\pic10c_finalproject.csprojResolveAssemblyReference.cache
