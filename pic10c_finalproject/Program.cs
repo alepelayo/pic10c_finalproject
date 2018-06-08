@@ -13,6 +13,24 @@ namespace pic10c_finalproject
         private const int hourlyRate = 30;
         private int hWorked;
 
+        //Constructors in C#: unlike C++, C# will automatically create a default constructor if one is not specified.
+        //The default "simply initializes all the fields in the class to default values"
+        //first constrctor
+        public Staff(string name)
+        {
+            nameOfStaff = name;
+            Console.WriteLine("\n" + nameOfStaff);
+            Console.WriteLine("---------------------");
+        }
+
+        //second constructor
+        public Staff(string first, string last)
+        {
+            nameOfStaff = first + " " + last;
+            Console.WriteLine("\n" + nameOfStaff);
+            Console.WriteLine("-----------------------");
+        }
+
         //known as a property. Kind of like member functions in C++. They are named using the same format as classes
         public int HoursWorked
         {
@@ -46,6 +64,24 @@ namespace pic10c_finalproject
                 return staffPay;
             else
                 return 0;
+        }
+
+        public int CalculatePay(int bonus, int allowance)
+        {
+            PrintMessage();
+
+            if (hWorked > 0)
+            {
+                return hWorked * hourlyRate + bonus + allowance;
+            }
+            else
+                return 0;
+        }
+
+        public override string ToString()
+        {
+            return "Name of Staff = " + nameOfStaff + ", hourlyRate = " + hourlyRate + ", hWorked = " + hWorked;
+          //  return base ToString(); This is what it had originally. Need to make sure what it means exactly
         }
     }
 
