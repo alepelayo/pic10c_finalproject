@@ -89,7 +89,7 @@ namespace pic10c_finalproject
     {
         static void Main(string[] args)
         {
-            //Console.WriteLine("Hello World. What is your name: ");
+            Console.WriteLine("Hello World. What is your name: ");
             //string input = Console.ReadLine();
             //string [] split = input.Split(' ');
             
