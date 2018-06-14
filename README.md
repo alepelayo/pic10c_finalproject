@@ -1,4 +1,4 @@
-## Translating *Siete-y-Medio* Card Game from C++ to C#
+## Translating a VectorStringClass from C++ to C#
 
 ### Daily Log:
 
