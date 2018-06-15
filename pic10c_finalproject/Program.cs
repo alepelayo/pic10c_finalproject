@@ -109,6 +109,7 @@ namespace pic10c_finalproject
             }
         }
 
+        //Takes in elements from the user up to size specified (array)
         public static int[] ReturnUserInput()
         {
             int[] a = new int[3]; //size of the array is specified here. The user must input 3 ints
@@ -127,7 +128,7 @@ namespace pic10c_finalproject
             Console.WriteLine("First element of list: {0}", a[0]);
         }
 
-        //Takes in elements from the user up to the size specified
+        //Takes in elements from the user up to the size specified (list)
         public static List<int> ReturnUserInputList(int size)
         {
             List<int> a = new List<int>();
@@ -141,6 +142,15 @@ namespace pic10c_finalproject
                 a.Add(input);
             }
             return a;
+        }
+
+        public static void PrintNames(params string[] names) //params allows us to pass an unknown number of elements (does not
+        {                                                    //need to be specified). Params MUST be the last parameter in a "function"
+            for(int i = 0; i < names.Length; ++i)
+            {
+                Console.Write(names[i] + " ");
+            }
+            Console.WriteLine();
         }
     }
 
@@ -175,7 +185,7 @@ namespace pic10c_finalproject
            // MyStaticClass.PrintArray(myArray); //we do not have to make our own function cause we have "foreach"
            
             int[] myArray2 = MyStaticClass.ReturnUserInput ();
-            MyStaticClass.PrintArray(myArray2);
+            //MyStaticClass.PrintArray(myArray2);
 
             List<int> myList = new List<int> { 2, 4, 6, 8 };
             MyStaticClass.PrintFirstListElement(myList);
@@ -185,6 +195,11 @@ namespace pic10c_finalproject
                 Console.Write(i);
                 Console.Write(" ");
             }
+            Console.WriteLine();
+
+            MyStaticClass.PrintNames("Ale");
+            MyStaticClass.PrintNames("Howdy", "Akash");
+            MyStaticClass.PrintNames("Carlos", "Eddie", "Gannon");
             Console.Read();
         }
     }
