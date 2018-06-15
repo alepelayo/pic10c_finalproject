@@ -82,7 +82,7 @@ namespace pic10c_finalproject
         public override string ToString()
         {
             return "Name of Staff = " + nameOfStaff + ", hourlyRate = " + hourlyRate + ", hWorked = " + hWorked;
-          //  return base ToString(); This is what it had originally. Need to make sure what it means exactly
+            //  return base ToString(); This is what it had originally. Need to make sure what it means exactly
         }
     }
 
@@ -117,5 +117,5 @@ namespace pic10c_finalproject
         }
     }
 
-   
+
 }
