@@ -111,7 +111,7 @@ namespace pic10c_finalproject
 
         public static int[] ReturnUserInput()
         {
-            int[] a = new int[3];
+            int[] a = new int[3]; //size of the array is specified here. The user must input 3 ints
             for(int i=0; i < a.Length; ++i)
             {
                 Console.Write("Enter an integer: ");
@@ -121,17 +121,19 @@ namespace pic10c_finalproject
             return a;
         }
 
+        //outputs the first element of the list
         public static void PrintFirstListElement(List<int> a)
         {
             Console.WriteLine("First element of list: {0}", a[0]);
         }
 
-        public static List<int> ReturnUserInputList()
+        //Takes in elements from the user up to the size specified
+        public static List<int> ReturnUserInputList(int size)
         {
             List<int> a = new List<int>();
             int input;
 
-            for(int i = 0; i < 4; ++i)
+            for(int i = 0; i < size; ++i)
             {
                 Console.Write("Enter an integer: ");
                 input = Convert.ToInt32(Console.ReadLine());
@@ -165,18 +167,19 @@ namespace pic10c_finalproject
             pay = staff3.CalculatePay();
             Console.WriteLine("Pay = {0}", pay);
 
-            Console.WriteLine("\n");
+            Console.WriteLine(); //this is equivalent to endl;
 
+            //Making an array to 
             int[] myArray = { 1, 2, 3, 4, 5 };
             MyStaticClass.PrintFirstElement(myArray);
-            MyStaticClass.PrintArray(myArray);
+           // MyStaticClass.PrintArray(myArray); //we do not have to make our own function cause we have "foreach"
            
             int[] myArray2 = MyStaticClass.ReturnUserInput ();
             MyStaticClass.PrintArray(myArray2);
 
             List<int> myList = new List<int> { 2, 4, 6, 8 };
             MyStaticClass.PrintFirstListElement(myList);
-            List<int> myList2 = MyStaticClass.ReturnUserInputList();
+            List<int> myList2 = MyStaticClass.ReturnUserInputList(2);
             foreach(int i in myList2)
             {
                 Console.Write(i);
