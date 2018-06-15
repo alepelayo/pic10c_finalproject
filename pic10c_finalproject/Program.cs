@@ -31,6 +31,7 @@ namespace pic10c_finalproject
             Console.WriteLine("-----------------------");
         }
 
+
         //known as a property. Kind of like member functions in C++. They are named using the same format as classes
         public int HoursWorked
         {
@@ -85,14 +86,33 @@ namespace pic10c_finalproject
         }
     }
 
+
+    /*
+    Next step is Instantiating an Object: basically ways to make use of the class to create objects 
+    */
+
+
+
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World. What is your name: ");
-            //string input = Console.ReadLine();
-            //string [] split = input.Split(' ');
-            
+            int pay;
+            Staff staff1 = new Staff("Peter");
+            staff1.HoursWorked = 160;
+            pay = staff1.CalculatePay(1000, 400);
+            Console.WriteLine("Pay {0}", pay);
+
+            Staff staff2 = new Staff("Jane", "Lee");
+            staff2.HoursWorked = 160;
+            pay = staff2.CalculatePay();
+            Console.WriteLine("Pay {0}", pay);
+
+            Staff staff3 = new Staff("Carol");
+            staff3.HoursWorked = -10;
+            pay = staff3.CalculatePay();
+            Console.WriteLine("Pay = {0}", pay);
+
             Console.Read();
         }
     }
