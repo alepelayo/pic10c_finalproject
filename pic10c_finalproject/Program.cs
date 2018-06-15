@@ -84,6 +84,8 @@ namespace pic10c_finalproject
             return "Name of Staff = " + nameOfStaff + ", hourlyRate = " + hourlyRate + ", hWorked = " + hWorked;
             //  return base ToString(); This is what it had originally. Need to make sure what it means exactly
         }
+
+
     }
 
 
@@ -91,11 +93,61 @@ namespace pic10c_finalproject
     Next step is Instantiating an Object: basically ways to make use of the class to create objects 
     */
 
+    static class MyStaticClass
+    {
+        //making and playing with lists and arrays
+        public static void PrintFirstElement(int[] a)
+        {
+            Console.WriteLine("First element: {0} \n", a[0]);
+        }
+
+        public static void PrintArray(int[] a)
+        {
+            for(int i = 0; i < a.Length; ++i)
+            {
+                Console.WriteLine("{0} ", a[i]);
+            }
+        }
+
+        public static int[] ReturnUserInput()
+        {
+            int[] a = new int[3];
+            for(int i=0; i < a.Length; ++i)
+            {
+                Console.Write("Enter an integer: ");
+                a[i] = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Integer added to array.\n");
+            }
+            return a;
+        }
+
+        public static void PrintFirstListElement(List<int> a)
+        {
+            Console.WriteLine("First element of list: {0}", a[0]);
+        }
+
+        public static List<int> ReturnUserInputList()
+        {
+            List<int> a = new List<int>();
+            int input;
+
+            for(int i = 0; i < 4; ++i)
+            {
+                Console.Write("Enter an integer: ");
+                input = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Integer has been added to list.\n");
+                a.Add(input);
+            }
+            return a;
+        }
+    }
+
 
 
     class Program
     {
-        static void Main(string[] args)
+        static void Main(string[] args) //this is static so that we do not have to make an object 
+                                        //Program every time we want to want to use any of the member fields, properties or methods
         {
             int pay;
             Staff staff1 = new Staff("Peter");
@@ -113,6 +165,23 @@ namespace pic10c_finalproject
             pay = staff3.CalculatePay();
             Console.WriteLine("Pay = {0}", pay);
 
+            Console.WriteLine("\n");
+
+            int[] myArray = { 1, 2, 3, 4, 5 };
+            MyStaticClass.PrintFirstElement(myArray);
+            MyStaticClass.PrintArray(myArray);
+           
+            int[] myArray2 = MyStaticClass.ReturnUserInput ();
+            MyStaticClass.PrintArray(myArray2);
+
+            List<int> myList = new List<int> { 2, 4, 6, 8 };
+            MyStaticClass.PrintFirstListElement(myList);
+            List<int> myList2 = MyStaticClass.ReturnUserInputList();
+            foreach(int i in myList2)
+            {
+                Console.Write(i);
+                Console.Write(" ");
+            }
             Console.Read();
         }
     }
