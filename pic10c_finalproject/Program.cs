@@ -176,38 +176,53 @@ namespace pic10c_finalproject
     static void Main(string[] args) //this is static so that we do not have to make an object 
                                     //Program every time we want to want to use any of the member fields, properties or methods
     {
-
-        //string decision;
         int s, r;
-
         Random rnd = new Random();
         char decision = 'y'; //starting with y in order to enter the loop
+        float player_points = 0;
+        float dealer_points = 0;
+        char difficulty;
+
+        Console.WriteLine("Welcome to Siete y Medio! Select 'e' for easy or 'd' for difficult");
+        difficulty = Console.ReadKey().KeyChar; //reading their decision
+        Console.WriteLine();
+
 
         while (decision == 'y') {
-            r = rnd.Next(1, 11);
-            s = rnd.Next(1, 5);
+            r = rnd.Next(1, 11); //generating random rank number
+            s = rnd.Next(1, 5); //generating random suit number
             Card myCard = new Card(r, s); //making a card
-            Console.WriteLine("You currently have " + myCard.get_points() + " points."); //displaying point total
-            Console.Write("Would you like another card? (y/n) "); //asking if they wish to get another card
-            decision = Console.ReadKey().KeyChar; //reading their decision
+            player_points += myCard.get_points();
+            Console.WriteLine("You currently have " + player_points + " points."); //displaying point total
+            if (player_points > 7.5)
+            {
+                Console.WriteLine("You have busted! You can no longer get new cards. ");
+                decision = 'n';
+            } 
+            else
+            {
+                Console.Write("Would you like another card? (y/n) "); //asking if they wish to get another card
+                decision = Console.ReadKey().KeyChar; //reading their decision
+            }
+
+            Console.WriteLine();
             Console.WriteLine();
 
         }
+        
+        if (difficulty == 'e')
+        {
+            while(dealer_points < 4)
+            {
+                r = rnd.Next(1, 11); //generating random rank number
+                s = rnd.Next(1, 5); //generating random suit number
+                Card myCard = new Card(r, s); //making a card
+                dealer_points += myCard.get_points();
+                Console.WriteLine("Dealer currently has " + dealer_points + " points."); //displaying point total
+                Console.WriteLine();
+            }
+        }
 
-        //if(decision == 'y') {
-        //    Console.WriteLine("you have said yee");
-
-        //}
-
-        //else if(decision == 'n')
-        //{
-        //    Console.WriteLine("you said nay");
-        //}
-
-        //else
-        //{
-        //    Console.WriteLine("Please input a valid answer.");
-        //}
         Console.Read();
         }
     }
