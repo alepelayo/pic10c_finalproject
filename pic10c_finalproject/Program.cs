@@ -6,151 +6,44 @@ using System.Threading.Tasks;
 
 namespace pic10c_finalproject
 {
-    class Staff
+
+    class Card
     {
-        //treated similarly to private member variables of a class
-        private string nameOfStaff;
-        private const int hourlyRate = 30;
-        private int hWorked;
 
-        //Constructors in C#: unlike C++, C# will automatically create a default constructor if one is not specified.
-        //The default "simply initializes all the fields in the class to default values"
-        //first constrctor
-        public Staff(string name)
+        private string suit;
+        private string rank;
+
+        //main constructor
+        public Card()
         {
-            nameOfStaff = name;
-            Console.WriteLine("\n" + nameOfStaff);
-            Console.WriteLine("---------------------");
-        }
 
-        //second constructor
-        public Staff(string first, string last)
-        {
-            nameOfStaff = first + " " + last;
-            Console.WriteLine("\n" + nameOfStaff);
-            Console.WriteLine("-----------------------");
-        }
-
-
-        //known as a property. Kind of like member functions in C++. They are named using the same format as classes
-        public int HoursWorked
-        {
-            get //accessor
+        Random rnd = new Random();
+            int s = rnd.Next(1, 5); //creates a random number between 1 and 4
+            int r = rnd.Next(1, 11); //creates a random number between 1 and 10
+            
+            switch(s)
             {
-                return hWorked;
-            }
-            set //setter
-            {
-                if (value > 0) //refers to the value right side of the assignment statement when users use this property
-                    hWorked = value;
-                else
-                    hWorked = 0;
+                case 1: suit = "OROS"; break;
+                case 2: suit = "COPAS"; break;
+                case 3: suit = "ESPADA"; break;
+                case 4: suit = "BATOS"; break;
+                default: break;
             }
 
-        }
-
-        public void PrintMessage()
-        {
-            Console.WriteLine("Calculating Pay...");
-        }
-
-        public int CalculatePay()
-        {
-            PrintMessage();
-
-            int staffPay;
-            staffPay = hWorked * hourlyRate;
-
-            if (hWorked > 0)
-                return staffPay;
-            else
-                return 0;
-        }
-
-        public int CalculatePay(int bonus, int allowance)
-        {
-            PrintMessage();
-
-            if (hWorked > 0)
+            switch(r)
             {
-                return hWorked * hourlyRate + bonus + allowance;
+                case 1: rank = "AS"; break;
+                case 2: rank = "DOS"; break;
+                case 3: rank = "TRES"; break;
+                case 4: rank = "CUATRO"; break;
+                case 5: rank = "CINCO"; break;
+                case 6: rank = "SEIS"; break;
+                case 7: rank = "SIETE"; break;
+                case 8: rank = "SOTA"; break;
+                case 9: rank = "CABALLO"; break;
+                case 10: rank = "REY"; break;
+                default: break;
             }
-            else
-                return 0;
-        }
-
-        public override string ToString()
-        {
-            return "Name of Staff = " + nameOfStaff + ", hourlyRate = " + hourlyRate + ", hWorked = " + hWorked;
-            //  return base ToString(); This is what it had originally. Need to make sure what it means exactly
-        }
-
-
-    }
-
-
-    /*
-    Next step is Instantiating an Object: basically ways to make use of the class to create objects 
-    */
-
-    static class MyStaticClass
-    {
-        //making and playing with lists and arrays
-        public static void PrintFirstElement(int[] a)
-        {
-            Console.WriteLine("First element: {0} \n", a[0]);
-        }
-
-        public static void PrintArray(int[] a)
-        {
-            for(int i = 0; i < a.Length; ++i)
-            {
-                Console.WriteLine("{0} ", a[i]);
-            }
-        }
-
-        //Takes in elements from the user up to size specified (array)
-        public static int[] ReturnUserInput()
-        {
-            int[] a = new int[3]; //size of the array is specified here. The user must input 3 ints
-            for(int i=0; i < a.Length; ++i)
-            {
-                Console.Write("Enter an integer: ");
-                a[i] = Convert.ToInt32(Console.ReadLine());
-                Console.WriteLine("Integer added to array.\n");
-            }
-            return a;
-        }
-
-        //outputs the first element of the list
-        public static void PrintFirstListElement(List<int> a)
-        {
-            Console.WriteLine("First element of list: {0}", a[0]);
-        }
-
-        //Takes in elements from the user up to the size specified (list)
-        public static List<int> ReturnUserInputList(int size)
-        {
-            List<int> a = new List<int>();
-            int input;
-
-            for(int i = 0; i < size; ++i)
-            {
-                Console.Write("Enter an integer: ");
-                input = Convert.ToInt32(Console.ReadLine());
-                Console.WriteLine("Integer has been added to list.\n");
-                a.Add(input);
-            }
-            return a;
-        }
-
-        public static void PrintNames(params string[] names) //params allows us to pass an unknown number of elements (does not
-        {                                                    //need to be specified). Params MUST be the last parameter in a "function"
-            for(int i = 0; i < names.Length; ++i)
-            {
-                Console.Write(names[i] + " ");
-            }
-            Console.WriteLine();
         }
 
     }
@@ -162,54 +55,6 @@ namespace pic10c_finalproject
         static void Main(string[] args) //this is static so that we do not have to make an object 
                                         //Program every time we want to want to use any of the member fields, properties or methods
         {
-            int pay;
-            Staff staff1 = new Staff("Peter");
-            staff1.HoursWorked = 160;
-            pay = staff1.CalculatePay(1000, 400);
-            Console.WriteLine("Pay {0}", pay);
-
-            Staff staff2 = new Staff("Jane", "Lee");
-            staff2.HoursWorked = 160;
-            pay = staff2.CalculatePay();
-            Console.WriteLine("Pay {0}", pay);
-
-            Staff staff3 = new Staff("Carol");
-            staff3.HoursWorked = -10;
-            pay = staff3.CalculatePay();
-            Console.WriteLine("Pay = {0}", pay);
-
-            Console.WriteLine(); //this is equivalent to endl;
-
-            //Making an array to 
-            int[] myArray = { 1, 2, 3, 4, 5 };
-            MyStaticClass.PrintFirstElement(myArray);
-           // MyStaticClass.PrintArray(myArray); //we do not have to make our own function cause we have "foreach"
-           
-            int[] myArray2 = MyStaticClass.ReturnUserInput ();
-            //MyStaticClass.PrintArray(myArray2);
-
-            List<int> myList = new List<int> { 2, 4, 6, 8 };
-            MyStaticClass.PrintFirstListElement(myList);
-            List<int> myList2 = MyStaticClass.ReturnUserInputList(2);
-            foreach(int i in myList2)
-            {
-                Console.Write(i);
-                Console.Write(" ");
-            }
-            Console.WriteLine();
-
-            MyStaticClass.PrintNames("Ale");
-            MyStaticClass.PrintNames("Susana", "Amiri");
-
-
-            List<string> myList3 = new List<string>();
-            myList3.Add("Hi");
-            myList3.Add("Howdy");
-
-            for(int i = 0; i < myList3.Count; ++i)
-            {
-                Console.Write(myList3[i] + ", ");
-            }
 
             Console.Read();
         }
