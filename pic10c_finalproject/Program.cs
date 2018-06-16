@@ -152,6 +152,7 @@ namespace pic10c_finalproject
             }
             Console.WriteLine();
         }
+
     }
 
 
@@ -198,8 +199,18 @@ namespace pic10c_finalproject
             Console.WriteLine();
 
             MyStaticClass.PrintNames("Ale");
-            MyStaticClass.PrintNames("Howdy", "Akash");
-            MyStaticClass.PrintNames("Carlos", "Eddie", "Gannon");
+            MyStaticClass.PrintNames("Susana", "Amiri");
+
+
+            List<string> myList3 = new List<string>();
+            myList3.Add("Hi");
+            myList3.Add("Howdy");
+
+            for(int i = 0; i < myList3.Count; ++i)
+            {
+                Console.Write(myList3[i] + ", ");
+            }
+
             Console.Read();
         }
     }

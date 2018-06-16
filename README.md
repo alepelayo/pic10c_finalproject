@@ -13,13 +13,16 @@
 
 - June 15th:
 	- Instead of couting variables using "<<", C# uses Console.WriteLine:
+```C++
 		int var = 10;
 		C++: cout << var;
+```C#
 		C#: Console.WriteLine("{0}", var);
 
 		Output for both is still just "10"
 	- Lists/Arrays: 
 		- Still treated similarly to C++, but instead of making a separate function to print all the elements out, we can simply use the following:
+```C#		
 			foreach(int i in ArrayOrListName)
 				Console.Write(i); //or Console.WriteLine(i) to have each element in a different line
 
