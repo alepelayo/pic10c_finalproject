@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using pic10c_finalproject;
 
 namespace pic10c_finalproject
 {
-
-    public enum suit_t {OROS, COPAS, ESPADAS, BATOS};
-    public enum rank_t {AS, DOS, TRES, CUATRO, CINCO, SEIS, SIETE, SOTA, CABALLO, REY};
 
     class Card
     {
@@ -20,20 +18,20 @@ namespace pic10c_finalproject
         public Card()
         {
 
-        Random rnd = new Random();
+            Random rnd = new Random();
             int s = rnd.Next(1, 5); //creates a random number between 1 and 4
             int r = rnd.Next(1, 11); //creates a random number between 1 and 10
-            
-            switch(s)
+
+            switch (s)
             {
-                case 1: suit = "oros"; break;
+                case 1: suit = "Oros"; break;
                 case 2: suit = "Copas"; break;
                 case 3: suit = "Espadas"; break;
                 case 4: suit = "Batos"; break;
                 default: break;
             }
 
-            switch(r)
+            switch (r)
             {
                 case 1: rank = "As"; break;
                 case 2: rank = "Dos"; break;
@@ -49,28 +47,36 @@ namespace pic10c_finalproject
             }
         }
 
-        public string get_spanish_suit
+        //spanish suit and rank methods
+        public string get_spanish_suit()
         {
-            
-            get
-            {
-                return suit;
-            }
-
+            return suit;
         }
 
-        public string get_spanish_rank
+        public string get_spanish_rank()
         {
-            get
-            {
-                return rank;
-            }
+            return rank;
         }
 
-       
-
+        //attempting to get rank as an int
+        public int get_rank()
+        {
+            switch (rank)
+            {
+                case "As": return 1;
+                case "Dos": return 2;
+                case "Tres": return 3;
+                case "Cuatro": return 4;
+                case "Cinco": return 5;
+                case "Seis": return 6;
+                case "Siete": return 7;
+                case "Sota": return 10;
+                case "Caballo": return 11;
+                case "Rey": return 12;
+                default: return 0;
+            }
+        }
     }
-}
 
 
 
@@ -82,8 +88,11 @@ namespace pic10c_finalproject
                                         //Program every time we want to want to use any of the member fields, properties or methods
         {
             Card myCard = new Card();
-            myCard.get_spanish_rank();
+            Card myCard2 = new Card();
+            Console.WriteLine(myCard.get_spanish_rank() + " de " + myCard.get_spanish_suit());
+            Console.WriteLine(myCard2.get_spanish_rank() + " de " + myCard2.get_spanish_suit());
             Console.Read();
         }
     }
+}
 
