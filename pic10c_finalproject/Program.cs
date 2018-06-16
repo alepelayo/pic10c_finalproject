@@ -8,20 +8,7 @@ using pic10c_finalproject;
 namespace pic10c_finalproject
 {
 
-    //public static class StaticRandom
-    //{
-    //    private static int seed;
 
-    //    private static ThreadLocal<Random> threadLocal = new ThreadLocal<Random>
-    //        (() => new Random(Interlocked.Increment(ref seed)));
-
-    //    static StaticRandom()
-    //    {
-    //        seed = Environment.TickCount;
-    //    }
-
-    //    public static Random Instance { get { return threadLocal.Value; } }
-    //}
 
 //--------------------------------------------------------------------------------------
     class Deck
@@ -158,14 +145,8 @@ namespace pic10c_finalproject
             }
 
         }
-
-        ////overloading the < operator
-        //public static bool operator < (Card card2) {
-        //    int x = Int32.Parse(rank);
-
-        //    return rank < card2.get_rank();
-                                                             }
     }
+}
 
 
 
@@ -179,26 +160,33 @@ namespace pic10c_finalproject
         int s, r;
         Random rnd = new Random();
         char decision = 'y'; //starting with y in order to enter the loop
-        float player_points = 0;
-        float dealer_points = 0;
-        char difficulty;
+        float player_points = 0, dealer_points = 0;
+        int player_money = 100, dealer_money = 900;
+        char difficulty; //allows user to choose their difficulty during the beginning of the game
+        int bet;
+
 
         Console.WriteLine("Welcome to Siete y Medio! Select 'e' for easy or 'd' for difficult");
         difficulty = Console.ReadKey().KeyChar; //reading their decision
         Console.WriteLine();
 
+        Console.Write("How much would like to bet? $");
+        bet = Convert.ToInt32(Console.ReadLine());
+        Console.WriteLine();
 
-        while (decision == 'y') {
+        while (decision == 'y')
+        {
             r = rnd.Next(1, 11); //generating random rank number
             s = rnd.Next(1, 5); //generating random suit number
             Card myCard = new Card(r, s); //making a card
             player_points += myCard.get_points();
             Console.WriteLine("You currently have " + player_points + " points."); //displaying point total
+            Console.WriteLine();
             if (player_points > 7.5)
             {
                 Console.WriteLine("You have busted! You can no longer get new cards. ");
                 decision = 'n';
-            } 
+            }
             else
             {
                 Console.Write("Would you like another card? (y/n) "); //asking if they wish to get another card
@@ -206,13 +194,12 @@ namespace pic10c_finalproject
             }
 
             Console.WriteLine();
-            Console.WriteLine();
 
         }
-        
+
         if (difficulty == 'e')
         {
-            while(dealer_points < 4)
+            while (dealer_points < 4)
             {
                 r = rnd.Next(1, 11); //generating random rank number
                 s = rnd.Next(1, 5); //generating random suit number
@@ -221,6 +208,61 @@ namespace pic10c_finalproject
                 Console.WriteLine("Dealer currently has " + dealer_points + " points."); //displaying point total
                 Console.WriteLine();
             }
+        }
+
+        if (difficulty == 'd')
+        {
+            while (dealer_points < 6)
+            {
+                r = rnd.Next(1, 11); //generating random rank number
+                s = rnd.Next(1, 5); //generating random suit number
+                Card myCard = new Card(r, s); //making a card
+                dealer_points += myCard.get_points();
+                Console.WriteLine("Dealer currently has " + dealer_points + " points."); //displaying point total
+                Console.WriteLine();
+            }
+        }
+
+        //reading the points now
+        if ((player_points > dealer_points && player_points <= 7.5) || (dealer_points > 7.5 && player_points <= 7.5))
+        {
+            //dealer loses money and player wins money
+            Console.WriteLine("You have won money!");
+            player_money += bet;
+
+            Console.WriteLine(player_money + "\n");
+            Console.WriteLine(dealer_money + "\n");
+        }
+        else if ((dealer_points > player_points && dealer_points <= 7.5) || (dealer_points <= 7.5 && player_points > 7.5))
+        {
+            //dealer wins money and player loses money
+            Console.WriteLine("You have lost money! But dealer won some!");
+            player_money -= bet;
+            dealer_money += bet;
+
+            Console.WriteLine(player_money + "\n");
+            Console.WriteLine(dealer_money + "\n");
+
+        }
+        else if (dealer_points > 7.5 && player_points > 7.5)
+        {
+            //both lose money (house advantage)
+            Console.WriteLine("You both lost money!");
+            player_money -= bet;
+            dealer_money -= bet;
+
+            Console.WriteLine(player_money + "\n");
+            Console.WriteLine(dealer_money + "\n");
+
+        }
+        else if (dealer_points == player_points)
+        {
+            //there is a tie. Nobody wins
+            Console.WriteLine("Tie! Nobody gets money!");
+
+            Console.WriteLine(player_money + "\n");
+            Console.WriteLine(dealer_money + "\n");
+
         }
 
         Console.Read();
