@@ -181,29 +181,33 @@ namespace pic10c_finalproject
         int s, r;
 
         Random rnd = new Random();
+        char decision = 'y'; //starting with y in order to enter the loop
 
-        r = rnd.Next(1, 11);
-        s = rnd.Next(1, 5);
-        Card myCard = new Card(r, s);
-        Console.WriteLine(myCard);
-        Console.WriteLine("You currently have " + myCard.get_points() + " points.");
-        Console.Write("Would you like another card? (y/n) ");
-        char decision = Console.ReadKey().KeyChar;
-        Console.WriteLine();
+        while (decision == 'y') {
+            r = rnd.Next(1, 11);
+            s = rnd.Next(1, 5);
+            Card myCard = new Card(r, s); //making a card
+            Console.WriteLine("You currently have " + myCard.get_points() + " points."); //displaying point total
+            Console.Write("Would you like another card? (y/n) "); //asking if they wish to get another card
+            decision = Console.ReadKey().KeyChar; //reading their decision
+            Console.WriteLine();
 
-        if(decision == 'y') {
-            Console.WriteLine("you have said yee");
         }
 
-        else if(decision == 'n')
-        {
-            Console.WriteLine("you said nay");
-        }
+        //if(decision == 'y') {
+        //    Console.WriteLine("you have said yee");
 
-        else
-        {
-            Console.WriteLine("Please input a valid answer.");
-        }
+        //}
+
+        //else if(decision == 'n')
+        //{
+        //    Console.WriteLine("you said nay");
+        //}
+
+        //else
+        //{
+        //    Console.WriteLine("Please input a valid answer.");
+        //}
         Console.Read();
         }
     }
