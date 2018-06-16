@@ -164,106 +164,129 @@ namespace pic10c_finalproject
         int player_money = 100, dealer_money = 900;
         char difficulty; //allows user to choose their difficulty during the beginning of the game
         int bet;
+        bool next_round = true;
 
 
         Console.WriteLine("Welcome to Siete y Medio! Select 'e' for easy or 'd' for difficult");
         difficulty = Console.ReadKey().KeyChar; //reading their decision
         Console.WriteLine();
 
-        Console.Write("How much would like to bet? $");
-        bet = Convert.ToInt32(Console.ReadLine());
-        Console.WriteLine();
-
-        while (decision == 'y')
+        while (dealer_money != 0 || player_money != 0)
         {
-            r = rnd.Next(1, 11); //generating random rank number
-            s = rnd.Next(1, 5); //generating random suit number
-            Card myCard = new Card(r, s); //making a card
-            player_points += myCard.get_points();
-            Console.WriteLine("You currently have " + player_points + " points."); //displaying point total
-            Console.WriteLine();
-            if (player_points > 7.5)
-            {
-                Console.WriteLine("You have busted! You can no longer get new cards. ");
-                decision = 'n';
-            }
-            else
-            {
-                Console.Write("Would you like another card? (y/n) "); //asking if they wish to get another card
-                decision = Console.ReadKey().KeyChar; //reading their decision
-            }
-
+            decision = 'y';
+            player_points = 0;
+            dealer_points = 0;
+            Console.Write("How much would like to bet? $");
+            bet = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine();
 
-        }
-
-        if (difficulty == 'e')
-        {
-            while (dealer_points < 4)
+            while (decision == 'y')
             {
                 r = rnd.Next(1, 11); //generating random rank number
                 s = rnd.Next(1, 5); //generating random suit number
                 Card myCard = new Card(r, s); //making a card
-                dealer_points += myCard.get_points();
-                Console.WriteLine("Dealer currently has " + dealer_points + " points."); //displaying point total
+                player_points += myCard.get_points(); //updating player's points
+                Console.WriteLine("You currently have " + player_points + " points."); //displaying point total
                 Console.WriteLine();
-            }
-        }
+                if (player_points > 7.5) //the game will automatically stop giving cards once user busts.
+                {
+                    Console.WriteLine("You have busted! You can no longer get new cards. ");
+                    decision = 'n';
+                }
+                else
+                {
+                    Console.Write("Would you like another card? (y/n) "); //asking if they wish to get another card
+                    decision = Console.ReadKey().KeyChar; //reading their decision
+                }
 
-        if (difficulty == 'd')
-        {
-            while (dealer_points < 6)
+                Console.WriteLine();
+
+            }
+
+            //dealer's turn to play
+            if (difficulty == 'e') //if user chose easy
             {
-                r = rnd.Next(1, 11); //generating random rank number
-                s = rnd.Next(1, 5); //generating random suit number
-                Card myCard = new Card(r, s); //making a card
-                dealer_points += myCard.get_points();
-                Console.WriteLine("Dealer currently has " + dealer_points + " points."); //displaying point total
-                Console.WriteLine();
+                while (dealer_points < 4) //dealer will continue to get cards until their point count reaches 4 or more
+                {
+                    r = rnd.Next(1, 11); //generating random rank number
+                    s = rnd.Next(1, 5); //generating random suit number
+                    Card myCard = new Card(r, s); //making a card
+                    dealer_points += myCard.get_points(); //updating dealer's points
+                    Console.WriteLine("Dealer currently has " + dealer_points + " points."); //displaying point total
+                    Console.WriteLine();
+                }
+            }
+
+            if (difficulty == 'd') //if user chose difficult
+            {
+                while (dealer_points < 6) //dealer will continue to get cards until their point count reaches 6 or more
+                {
+                    r = rnd.Next(1, 11); //generating random rank number
+                    s = rnd.Next(1, 5); //generating random suit number
+                    Card myCard = new Card(r, s); //making a card
+                    dealer_points += myCard.get_points(); //updating dealer's points
+                    Console.WriteLine("Dealer currently has " + dealer_points + " points."); //displaying point total
+                    Console.WriteLine();
+                }
+            }
+
+            //reading the points now
+            if ((player_points > dealer_points && player_points <= 7.5) || (dealer_points > 7.5 && player_points <= 7.5))
+            {
+                //dealer loses money and player wins money
+                Console.WriteLine("You have won money!");
+                player_money += bet;
+
+                Console.WriteLine(player_money + "\n");
+                Console.WriteLine(dealer_money + "\n");
+            }
+            else if ((dealer_points > player_points && dealer_points <= 7.5) || (dealer_points <= 7.5 && player_points > 7.5))
+            {
+                //dealer wins money and player loses money
+                Console.WriteLine("You have lost money! But dealer won some!");
+                player_money -= bet;
+                dealer_money += bet;
+
+                Console.WriteLine(player_money + "\n");
+                Console.WriteLine(dealer_money + "\n");
+
+            }
+            else if (dealer_points > 7.5 && player_points > 7.5)
+            {
+                //both lose money (house advantage)
+                Console.WriteLine("You both lost money!");
+                player_money -= bet;
+                dealer_money -= bet;
+
+                Console.WriteLine(player_money + "\n");
+                Console.WriteLine(dealer_money + "\n");
+
+            }
+            else if (dealer_points == player_points)
+            {
+                //there is a tie. Nobody wins
+                Console.WriteLine("Tie! Nobody gets money!");
+
+                Console.WriteLine(player_money + "\n");
+                Console.WriteLine(dealer_money + "\n");
+
+            }
+
+            //Ending the game:
+            if (dealer_money == 0)
+            {
+                Console.WriteLine("Dealer has run out of money! You have won!");
+                break;
+            }
+
+            else if (player_money == 0)
+            {
+                Console.WriteLine("You have lost all your money! Come back when you have more money.");
+                break;
             }
         }
 
-        //reading the points now
-        if ((player_points > dealer_points && player_points <= 7.5) || (dealer_points > 7.5 && player_points <= 7.5))
-        {
-            //dealer loses money and player wins money
-            Console.WriteLine("You have won money!");
-            player_money += bet;
 
-            Console.WriteLine(player_money + "\n");
-            Console.WriteLine(dealer_money + "\n");
-        }
-        else if ((dealer_points > player_points && dealer_points <= 7.5) || (dealer_points <= 7.5 && player_points > 7.5))
-        {
-            //dealer wins money and player loses money
-            Console.WriteLine("You have lost money! But dealer won some!");
-            player_money -= bet;
-            dealer_money += bet;
-
-            Console.WriteLine(player_money + "\n");
-            Console.WriteLine(dealer_money + "\n");
-
-        }
-        else if (dealer_points > 7.5 && player_points > 7.5)
-        {
-            //both lose money (house advantage)
-            Console.WriteLine("You both lost money!");
-            player_money -= bet;
-            dealer_money -= bet;
-
-            Console.WriteLine(player_money + "\n");
-            Console.WriteLine(dealer_money + "\n");
-
-        }
-        else if (dealer_points == player_points)
-        {
-            //there is a tie. Nobody wins
-            Console.WriteLine("Tie! Nobody gets money!");
-
-            Console.WriteLine(player_money + "\n");
-            Console.WriteLine(dealer_money + "\n");
-
-        }
 
         Console.Read();
         }
