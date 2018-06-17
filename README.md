@@ -46,9 +46,9 @@ into the possibily of making a .txt file with C# similarly to the C++ version.
 Although my project did not easily connect with class topics, I quickly learned the multiple things C# lacks
 compared to C++: 
 - C# does not use pointers unless used in an unsafe context, therefore does 
-not use smart_pointers either. 
+not use smart_pointers either.
+ 
 	-As Microsoft states: 
-
 		> "To maintain type safety and security, C# does not support pointer arithmetic, by default.
 		> However, by using the unsafe keyword, you can define an unsafe context in which pointers can be used."
 
@@ -58,8 +58,10 @@ line.
 
 - Although C# has access to for, while, and do-while loops similarly to C++, C# also has a foreach loop which
 easily print all the elements of an array or list:
+''''c#
 	 foreach(int i in ArrayOrListName)
 		Console.Write(i);
+''''
 - A big part of C# is the use of stl containers such as Lists. Although I did not use any for this specific
 assignment, my experimental branch has an example of both an array and a list and how they are used in C#.
 
