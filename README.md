@@ -48,21 +48,21 @@ compared to C++:
 - C# does not use pointers unless used in an unsafe context, therefore does 
 not use smart_pointers either.
  
--As Microsoft states: 
+	- As Microsoft states: 
 
-> "To maintain type safety and security, C# does not support pointer arithmetic, by default.
-> However, by using the unsafe keyword, you can define an unsafe context in which pointers can be used."
+	> "To maintain type safety and security, C# does not support pointer arithmetic, by default.
+	> However, by using the unsafe keyword, you can define an unsafe context in which pointers can be used."
 
-- Instead of outputting to the console using ''' cout <<''' , C# uses '''Console.WriteLine()''' which automatically 
-include '<< endl;' (or goes on the next bottom line) or '''Console.Write()''' if one wishes to stay in the same
+- Instead of outputting to the console using `cout <<` , C# uses `Console.WriteLine()` which automatically 
+include `<< endl;` (or goes on the next bottom line) or `Console.Write()` if one wishes to stay in the same
 line. 
 
 - Although C# has access to for, while, and do-while loops similarly to C++, C# also has a foreach loop which
 easily print all the elements of an array or list:
-'''
+```
 	 foreach(int i in ArrayOrListName)
 		Console.Write(i);
-'''
+```
 - A big part of C# is the use of stl containers such as Lists. Although I did not use any for this specific
 assignment, my experimental branch has an example of both an array and a list and how they are used in C#.
 
