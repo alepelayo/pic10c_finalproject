@@ -80,5 +80,4 @@ it is all under the experimental branch while the coding for the actual card gam
 	> bin will contain a folder for each of your solution configuration 
 	> (debug is the default) which contains the build outputs for your project.
 		- source: https://stackoverflow.com/questions/1085637/two-folders-bin-and-obj-does-anyone-know-why
-	
-	- Unlike C++, C# does not have a designated output/input command (cout/cin)
+
