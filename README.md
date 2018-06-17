@@ -48,8 +48,10 @@ compared to C++:
 - C# does not use pointers unless used in an unsafe context, therefore does 
 not use smart_pointers either. 
 	-As Microsoft states: 
+
 		> "To maintain type safety and security, C# does not support pointer arithmetic, by default.
 		> However, by using the unsafe keyword, you can define an unsafe context in which pointers can be used."
+
 - Instead of outputting to the console using 'cout <<', C# uses 'Console.WriteLine()' which automatically 
 include '<< endl;' (or goes on the next bottom line) or 'Console.Write()' if one wishes to stay in the same
 line. 
