@@ -8,64 +8,15 @@ using pic10c_finalproject;
 namespace pic10c_finalproject
 {
 
-
-
-//--------------------------------------------------------------------------------------
-    class Deck
-    {
-        private List<Card> deck;
-
-
-        public void make_deck()
-        {
-            for(int i=0; i < 4; ++i)
-            {
-                for(int j = 0; j < 10; ++i)
-                {
-                    Card newcard = new Card(i, j);
-                }
-            }
-        }
-
-        public void shuffle()
-        {
-
-            Random rnd = new Random();
-            Card carta = new Card(1, 1);
-            List<Card> empty = new List<Card>();
-            while (empty.Count != 40)
-            {
-                if (!(empty.Contains(carta)))
-                {
-                    empty.Add(carta);
-                    Console.WriteLine("Added a new card: {0}", carta);
-                }
-                else
-                {
-                    Console.WriteLine("Card has already been added.");
-                }
-            }
-
-        }
-
-    }
-//--------------------------------------------------------------------------------------
-
     class Card
     {
 
         private string suit;
         private string rank;
 
-
-
         //main constructor
         public Card(int r, int s)
         {
-
-
-            // int s = rnd.Next(1, 5); //creates a random number between 1 and 4
-            // int r = rnd.Next(1, 11); //creates a random number between 1 and 10
 
             switch (s)
             {
@@ -97,18 +48,13 @@ namespace pic10c_finalproject
             Console.WriteLine(rank + " de " + suit);
         }
 
+
         //spanish suit and rank methods
-        public string get_spanish_suit()
-        {
-            return suit;
-        }
+        public string get_spanish_suit { get { return suit; } }
 
-        public string get_spanish_rank()
-        {
-            return rank;
-        }
+        public string get_spanish_rank { get { return rank; } }
 
-        //attempting to get rank as an int
+        //gets rank as an int
         public int get_rank()
         {
             switch (rank)
@@ -149,9 +95,6 @@ namespace pic10c_finalproject
 }
 
 
-
-
-
     class Program
     {
     static void Main(string[] args) //this is static so that we do not have to make an object 
@@ -161,20 +104,18 @@ namespace pic10c_finalproject
         Random rnd = new Random();
         char decision = 'y'; //starting with y in order to enter the loop
         float player_points = 0, dealer_points = 0;
-        int player_money = 100, dealer_money = 900;
+        int player_money = 100, dealer_money = 900; //initializing the amount of money each player has
         char difficulty; //allows user to choose their difficulty during the beginning of the game
         int bet;
-        bool next_round = true;
-
 
         Console.WriteLine("Welcome to Siete y Medio! Select 'e' for easy or 'd' for difficult");
         difficulty = Console.ReadKey().KeyChar; //reading their decision
         Console.WriteLine();
 
-        while (dealer_money != 0 || player_money != 0)
+        while (dealer_money != 0 || player_money != 0) //more rounds will be played while the dealer nor the player have run out of money
         {
-            decision = 'y';
-            player_points = 0;
+            decision = 'y'; //set the decision to yes in order to enter the while loop
+            player_points = 0; //initilizing points in the start of every round
             dealer_points = 0;
             Console.Write("How much would like to bet? $");
             bet = Convert.ToInt32(Console.ReadLine());
@@ -246,10 +187,7 @@ namespace pic10c_finalproject
                 Console.WriteLine("You have lost money! But dealer won some!");
                 player_money -= bet;
                 dealer_money += bet;
-
-                Console.WriteLine(player_money + "\n");
-                Console.WriteLine(dealer_money + "\n");
-
+            
             }
             else if (dealer_points > 7.5 && player_points > 7.5)
             {
@@ -258,17 +196,11 @@ namespace pic10c_finalproject
                 player_money -= bet;
                 dealer_money -= bet;
 
-                Console.WriteLine(player_money + "\n");
-                Console.WriteLine(dealer_money + "\n");
-
             }
             else if (dealer_points == player_points)
             {
                 //there is a tie. Nobody wins
                 Console.WriteLine("Tie! Nobody gets money!");
-
-                Console.WriteLine(player_money + "\n");
-                Console.WriteLine(dealer_money + "\n");
 
             }
 
@@ -286,12 +218,6 @@ namespace pic10c_finalproject
             }
         }
 
-
-
         Console.Read();
         }
     }
-
-
-
-
