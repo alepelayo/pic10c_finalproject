@@ -49,7 +49,7 @@ namespace pic10c_finalproject
         }
 
 
-        //spanish suit and rank methods
+        //spanish suit and rank fields
         public string get_spanish_suit { get { return suit; } }
 
         public string get_spanish_rank { get { return rank; } }
